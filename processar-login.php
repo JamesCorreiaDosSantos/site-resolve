@@ -1,0 +1,140 @@
+<?php
+include "ReplDB.php";
+$db = new ReplDB(getenv("REPLIT_DB_URL"));
+
+$idEmailLoginEmail = $_POST['email'];
+$valorSenhaEmail = $db->get($idEmailLoginEmail);
+
+$valorSenhaEmail2 = $_POST['senha'];
+
+session_start();
+$_SESSION['email'] = $_POST['email'];
+$_SESSION['senha'] = $_POST['senha'];
+
+    if($valorSenhaEmail == $valorSenhaEmail2){
+         echo '<script>';
+          echo 'function minhaFuncaoJS() {';
+          echo '    alert("Bem Vindo");';
+          echo '    window.location.href = "\produtos.php";';
+          echo '}';
+          echo '</script>';
+      
+    }else{
+        echo '<script>';
+          echo 'function minhaFuncaoJS() {';
+          echo '    alert("senha ou email errados, tente novamente");';
+          echo '}';
+          echo '</script>';
+    }
+
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>resolve</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href= "style.css">
+</head>
+<body>
+
+
+   <h2 class="adaptar cor">Resolve a Sua loja de Soluções</h2>
+
+  <nav class="navbar navbar-expand-lg cor">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/esolve.php">Resolve</a>
+     
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/esolve.php">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/verificaLogin.php">Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sobre.php">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login.php" >Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ajuda.php" >Ajuda</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h2>Login</h2>
+  <form method="post" action="processar-login.php" >
+
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" id="email" size="30" required><br><br>
+
+     <label for="email">Senha:</label><br>
+     <input type="password" name="senha" id="senha" maxlength="8" required><br><br>
+
+    <input type="submit" value="Enviar"><br><br>
+
+    <a href="\cadastra-login.php">Cadastre-se</a>
+
+  </form>
+
+  <footer class="footer">
+
+    <div class="conteudo">
+
+      <div class="social">
+
+        <a href="https://pt-br.facebook.com/" class="icon-facebook" target="_blank" title="https://pt-br.facebook.com/">
+
+          <img src="imagens/facebook.png">
+
+        </a>
+
+        <a href="https://twitter.com/login?lang=pt" class="icon-twitter" target="_blank" title="https://twitter.com/login?lang=pt">
+
+          <img src="imagens/twitter.png">
+
+        </a>
+
+        <a href="https://www.youtube.com/" class="icon-youtube" target="https://www.youtube.com/" >
+
+          <img src="imagens/youtube.png">
+
+        </a>
+
+        <a href="https://www.whatsapp.com/?lang=pt_br"target="_blank" class="icon-whats" title="https://www.whatsapp.com/?lang=pt_br" >
+
+          <img class="wh" src="imagens/whats.png">
+
+        </a>
+
+        <a href="https://outlook.live.com/owa/" class="icon-email" target="_blank" title="https://outlook.live.com/owa/">
+
+          <img src="imagens/email.png">
+
+        </a>
+
+        </div>
+
+        <div> 
+
+          <p >James Correia - todos os direitos reservados!!</p>
+
+        </div>
+
+    </div>
+
+
+  </footer>
+
+    <script>
+          minhaFuncaoJS();
+    </script>
+
+</body>
+</html>
